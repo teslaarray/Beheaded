@@ -23,7 +23,7 @@ R2 = np.array([2, 0])
 xi = x.flat; yi = y.flat
 Vi = V.flat
 for i in range(len(xi)):
-    Vi[i] = getV( [1, 1], np.array([xi[i], yi[i]]), (R1, R2))
+    Vi[i] = getV( [1, -1], np.array([xi[i], yi[i]]), (R1, R2))
 
 #pl.contourf(x, y, V)
 #pl.show()
