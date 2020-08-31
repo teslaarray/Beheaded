@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as pl
-#from mpl_toolkits.mplot3d import Axes3D
-"""
+
+
 def getE(Qr, R):
 
     #Qr the pos of all the Qs
@@ -36,7 +36,11 @@ print (getE(Q, (0., 0.)))
 
 #as expected the E at (0,5) is much more accurate ( 1.19 vs 0.94 )
 #while E at (0, 0) is relatively way off ( -0.420 vs -0.268 )
+
+
+
 """
+#check zero points of E
 
 Q = np.array([
     [-1, 2],
@@ -69,3 +73,4 @@ for i in range(len(E)):
         index.append(xy[i])
 
 print (index)
+"""
