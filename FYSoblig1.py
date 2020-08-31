@@ -4,35 +4,34 @@ import matplotlib.pyplot as pl
 
 def getE(Qr, R):
 
-    #Qr the pos of all the Qs
-    #R target loc
+    #Qr: the loc of all the Qs
+    #R: target loc
 
-    K = 1 #K = 4piE0
-    #total q should be 3q
+    K = 1 #K = 1/4piE0, just to make it simple
+
+    #total charge should be 3q
     #so that we can compare with hand calcs
     q = 3/len(Qr)
 
     E = np.zeros_like(R)
     for i in range(len(Qr)):
-        #E at Qi
+        #E from Qi
         r = R - Qr[i]
         E += q*r/np.linalg.norm(r)**3
     return E
 
 #place Qs
-N=50
+N=100
 x = np.linspace(-2, 2, N)
 y = -x**2 + 4
 
-Q = np.array( [ [x[i], y[i]] for i in range(len(x))] )
+Q = np.array( [ [x[i], y[i] ] for i in range(len(x))] )
 
 #hand calculations gave ca 1.19y for E at (0, 5)
-print (getE(Q, (0., 5.)))
-#[-7.37257477e-18  9.40349074e-01]
+print (f"E(0, 5): {getE(Q, (0., 5.))}")
 
 #and -0.420 at (0,0)
-print (getE(Q, (0., 0.)))
-#[ 8.32667268e-17 -2.68056759e-01]
+print (f"E(0, 0): {getE(Q, (0., 0.))}")
 
 #as expected the E at (0,5) is much more accurate ( 1.19 vs 0.94 )
 #while E at (0, 0) is relatively way off ( -0.420 vs -0.268 )
