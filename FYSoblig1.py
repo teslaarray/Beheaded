@@ -47,7 +47,7 @@ Q = np.array([
     [1, 2]
 ])
 
-def getE(Qr, target):
+def getEs(Qr, target):
 
     E = np.zeros_like(target)
     for q in Qr:
@@ -60,7 +60,7 @@ N = 500
 
 xy = np.array( [ [0, i] for i in np.linspace(0, 5, N)])
 
-E = np.array( [ getE(Q, xy[i]) for i in range(len(xy)) ])
+E = np.array( [ getEs(Q, xy[i]) for i in range(len(xy)) ])
 
 #all the E = 0
 
@@ -75,3 +75,47 @@ for i in range(len(E)):
 
 print (zeroP)
 """
+
+#zero points of the actual field
+
+def getE(Qr, R):
+
+    #Qr: the loc of all the Qs
+    #R: target loc
+
+    K = 1 #K = 1/4piE0, just to make it simple
+
+    #total charge should be 3q
+    #so that we can compare with hand calcs
+    q = 3/len(Qr)
+
+    E = np.zeros_like(R)
+    for i in range(len(Qr)):
+        #E from Qi
+        r = R - Qr[i]
+        E += q*r/np.linalg.norm(r)**3
+    return E
+
+#place Qs
+N=600
+x = np.linspace(-2, 2, N)
+y = -x**2 + 4
+
+Q = np.array( [ [x[i], y[i] ] for i in range(len(x))] )
+
+R = np.array( [ [0., i] for i in np.linspace(0, 4, N) ])
+
+allE = [ getE(Q, r) for r in R ]
+
+zeroP = []
+
+for i in range(len(allE)):
+
+    if (alleE[i][1] >= 0)
+    if (np.linalg.norm(allE[i]) < 1e-1):
+        
+        zeroP.append(xy[i])
+
+print (zeroP)
+
+
