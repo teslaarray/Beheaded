@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as pl
 
-
+"""
 def getE(Qr, R):
 
     #Qr: the loc of all the Qs
@@ -35,7 +35,7 @@ print (f"E(0, 0): {getE(Q, (0., 0.))}")
 
 #as expected the E at (0,5) is much more accurate ( 1.19 vs 0.94 )
 #while E at (0, 0) is relatively way off ( -0.420 vs -0.268 )
-
+"""
 
 
 """
@@ -46,7 +46,6 @@ Q = np.array([
     [0, 4],
     [1, 2]
 ])
-
 
 def getE(Qr, target):
 
@@ -65,11 +64,14 @@ E = np.array( [ getE(Q, xy[i]) for i in range(len(xy)) ])
 
 #all the E = 0
 
-index = []
+zeroP = []
 
 for i in range(len(E)):
-    if (np.linalg.norm(E[i]) < 0.01):
-        index.append(xy[i])
+    # if the test number (1e-2) was any smaller the
+    # algorith wouldnt spit anything out
+    # at N = 10000 1e-3 does work, while 1e-4 gives nothing
+    if (np.linalg.norm(E[i]) < 1e-2):
+        zeroP.append(xy[i])
 
-print (index)
+print (zeroP)
 """
