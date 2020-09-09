@@ -75,7 +75,7 @@ for i in range(len(E)):
 
 print (zeroP)
 """
-
+"""
 #zero points of the actual field
 
 def getE(Qr, R):
@@ -117,5 +117,73 @@ for i in range(len(allE)):
         zeroP.append(xy[i])
 
 print (zeroP)
+"""
+"""
+Qsimp = np.array([
+    [-1, 2],
+    [0, 4],
+    [1, 2]
+])
+
+N = 30
+
+x = np.linspace(-3, 3, N)
+y = np.linspace(-0.5, 6, N)
+
+x, y = np.meshgrid(x, y)
+
+Vsimp = np.zeros_like(x)
+
+xi = x.flat; yi = y.flat; Vi = Vsimp.flat
+
+for i in range (len(xi)):
+    for q in Qsimp:
+        r = np.array([xi[i]-q[0], yi[i]-q[1]])
+        Vi[i] += 1/np.linalg.norm(r)
 
 
+pl.contourf(x, y, Vsimp, 200)
+
+Ey, Ex = np.gradient(Vsimp)
+
+Ex = -Ex; Ey = -Ey
+
+pl.quiver(x, y, Ex, Ey)
+pl.show()
+"""
+
+# place Qs
+N = 100
+xt = np.linspace(-2, 2, N)
+yt = -(x ** 2) + 4
+
+Qact = np.array([[xt[i], yt[i]] for i in range(len(xt))])
+
+# copy paste
+N = 30
+x = np.linspace(-4, 4, N)
+y = np.linspace(-2, 6, N)
+
+x, y = np.meshgrid(x, y)
+
+Vact = np.zeros_like(x)
+
+xi = x.flat
+yi = y.flat
+Vi = Vsimp.flat
+
+for i in range(len(xi)):
+    for q in Qact:
+        r = [xi[i] - q[0], yi[i] - q[1]]
+        Vi[i] += 1 / np.linalg.norm(r)  # again, all constants are 1
+
+
+pl.figure(figsize=(10, 10))
+pl.contourf(x, y, Vact, 200)
+
+Ey, Ex = np.gradient(Vact)
+
+Ex = -Ex
+Ey = -Ey
+
+pl.quiver(x, y, Ex, Ey)
