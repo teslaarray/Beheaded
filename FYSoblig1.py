@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as pl
 
+
 """
 def getE(Qr, R):
 
@@ -151,7 +152,7 @@ Ex = -Ex; Ey = -Ey
 pl.quiver(x, y, Ex, Ey)
 pl.show()
 """
-
+"""
 # place Qs
 N = 100
 xt = np.linspace(-2, 2, N)
@@ -187,3 +188,4 @@ Ex = -Ex
 Ey = -Ey
 
 pl.quiver(x, y, Ex, Ey)
+"""
