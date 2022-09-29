@@ -52,6 +52,8 @@ t = np.zeros((n, 1), float)
 # the first one acts like a voltage source
 V[0, 0] = Vpulse(0, t0, V0)
 
+"""
+
 for j in range(n - 1):
 
     # time += dt
@@ -77,3 +79,6 @@ for j in [40, 70, 90]:
 
 pl.legend()
 pl.show()
+
+pl.figure()
+"""

@@ -1,0 +1,16 @@
+
+Y = [0.05203, 0.0728, 0.10755, 0.147002, 0.2335]; %current mA
+X
+
+
+scatter(X, Y);
+hold on
+p = polyfit(X, Y, 1);
+p
+x1 = linspace(X(1), X(length(X)), 1000);
+y1 = polyval(p, x1);
+
+plot(x1, y1, "red")
+
+xlabel("mA");
+ylabel("mV");
